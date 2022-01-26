@@ -1,4 +1,5 @@
-﻿using Microsoft.SharePoint.Client;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
+using Microsoft.SharePoint.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -91,6 +92,12 @@ namespace SharePointSiteOwnerTools
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnBaseSiteDetails_Click(object sender, EventArgs e)
+        {
+            BaseSiteDetailsForm frm = new BaseSiteDetailsForm();
+            frm.Show();
         }
     }
 }

@@ -37,6 +37,7 @@
             this.txtBoxCurrentStatus_BaseSiteSetAs = new System.Windows.Forms.TextBox();
             this.lblCurrentStatus_CurrentSite = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnBaseSiteDetails = new System.Windows.Forms.Button();
             this.grpBoxCurrentStatus.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +61,7 @@
             // 
             // btnTestAccess
             // 
-            this.btnTestAccess.Location = new System.Drawing.Point(469, 33);
+            this.btnTestAccess.Location = new System.Drawing.Point(767, 5);
             this.btnTestAccess.Name = "btnTestAccess";
             this.btnTestAccess.Size = new System.Drawing.Size(113, 23);
             this.btnTestAccess.TabIndex = 2;
@@ -70,7 +71,7 @@
             // 
             // btnSetSite
             // 
-            this.btnSetSite.Location = new System.Drawing.Point(604, 33);
+            this.btnSetSite.Location = new System.Drawing.Point(686, 5);
             this.btnSetSite.Name = "btnSetSite";
             this.btnSetSite.Size = new System.Drawing.Size(75, 23);
             this.btnSetSite.TabIndex = 3;
@@ -118,11 +119,22 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnBaseSiteDetails
+            // 
+            this.btnBaseSiteDetails.Location = new System.Drawing.Point(532, 34);
+            this.btnBaseSiteDetails.Name = "btnBaseSiteDetails";
+            this.btnBaseSiteDetails.Size = new System.Drawing.Size(148, 23);
+            this.btnBaseSiteDetails.TabIndex = 6;
+            this.btnBaseSiteDetails.Text = "Get Base Site Details";
+            this.btnBaseSiteDetails.UseVisualStyleBackColor = true;
+            this.btnBaseSiteDetails.Click += new System.EventHandler(this.btnBaseSiteDetails_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 633);
+            this.Controls.Add(this.btnBaseSiteDetails);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.grpBoxCurrentStatus);
             this.Controls.Add(this.btnSetSite);
@@ -149,6 +161,7 @@
         private System.Windows.Forms.Label lblCurrentStatus_CurrentSite;
         public System.Windows.Forms.TextBox txtBoxCurrentStatus_BaseSiteSetAs;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnBaseSiteDetails;
     }
 }
 
