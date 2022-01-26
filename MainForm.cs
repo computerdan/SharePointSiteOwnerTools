@@ -99,5 +99,11 @@ namespace SharePointSiteOwnerTools
             BaseSiteDetailsForm frm = new BaseSiteDetailsForm();
             frm.Show();
         }
+
+        private void btnRetrieveAllSiteLists_Click(object sender, EventArgs e)
+        {
+            AllSiteListsForm frm = new AllSiteListsForm();
+            frm.Show();
+        }
     }
 }

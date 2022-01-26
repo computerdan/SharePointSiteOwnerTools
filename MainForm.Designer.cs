@@ -38,6 +38,7 @@
             this.lblCurrentStatus_CurrentSite = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnBaseSiteDetails = new System.Windows.Forms.Button();
+            this.btnRetrieveAllSiteLists = new System.Windows.Forms.Button();
             this.grpBoxCurrentStatus.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,11 +130,22 @@
             this.btnBaseSiteDetails.UseVisualStyleBackColor = true;
             this.btnBaseSiteDetails.Click += new System.EventHandler(this.btnBaseSiteDetails_Click);
             // 
+            // btnRetrieveAllSiteLists
+            // 
+            this.btnRetrieveAllSiteLists.Location = new System.Drawing.Point(532, 63);
+            this.btnRetrieveAllSiteLists.Name = "btnRetrieveAllSiteLists";
+            this.btnRetrieveAllSiteLists.Size = new System.Drawing.Size(148, 23);
+            this.btnRetrieveAllSiteLists.TabIndex = 7;
+            this.btnRetrieveAllSiteLists.Text = "Retrieve All Site Lists";
+            this.btnRetrieveAllSiteLists.UseVisualStyleBackColor = true;
+            this.btnRetrieveAllSiteLists.Click += new System.EventHandler(this.btnRetrieveAllSiteLists_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 633);
+            this.Controls.Add(this.btnRetrieveAllSiteLists);
             this.Controls.Add(this.btnBaseSiteDetails);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.grpBoxCurrentStatus);
@@ -162,6 +174,7 @@
         public System.Windows.Forms.TextBox txtBoxCurrentStatus_BaseSiteSetAs;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnBaseSiteDetails;
+        private System.Windows.Forms.Button btnRetrieveAllSiteLists;
     }
 }
 

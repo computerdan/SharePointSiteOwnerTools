@@ -32,9 +32,9 @@ namespace SharePointSiteOwnerTools
 
         private void displaySiteProps()
         {
-            var siteProps = new List<SiteProperties>();
+            //var siteProps = new Web();
             ClientContext ctx = SPAuth.GetWebLoginClientContext(CurrentStatus.currentBaseUrl);
-            siteProps = SPOps.Get_SiteProps(ctx);
+            Web siteProps = SPOps.Get_SiteProps(ctx);
             spProps.DataSource = siteProps;
             dataGridView_BaseSiteDetails.DataSource = spProps;
                         

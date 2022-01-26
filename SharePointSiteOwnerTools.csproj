@@ -227,6 +227,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllSiteListsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllSiteListsForm.Designer.cs">
+      <DependentUpon>AllSiteListsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseSiteDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +251,9 @@
     <Compile Include="Settings.cs" />
     <Compile Include="SPAuth.cs" />
     <Compile Include="SPOps.cs" />
+    <EmbeddedResource Include="AllSiteListsForm.resx">
+      <DependentUpon>AllSiteListsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseSiteDetailsForm.resx">
       <DependentUpon>BaseSiteDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
