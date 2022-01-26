@@ -3,7 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="currentBaseUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Not Set</Value>
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="currentAuthUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="currentAuthUserIsSiteAdmin" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

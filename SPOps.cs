@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SharePointSiteOwnerTools
 {
@@ -162,12 +163,29 @@ namespace SharePointSiteOwnerTools
             context.ExecuteQuery();
             foreach (ListItem listItem in items)
             {
-                itemArrayList.Add(listItem["Title"]);
-                // We have all the list item data. For example, Title.
-                //label1.Text = label1.Text + ", " + listItem["Title"];
+
+                try
+                {
+                    itemArrayList.Add(listItem["Title"]);
+
+                }
+                catch { MessageBox.Show("No Items for for List"); }
             }
 
             return itemArrayList;
+        }
+        public static ArrayList getAllSPMemberGroups(ClientContext context)
+        {
+            ArrayList memGroups = new ArrayList();
+            GroupCollection siteGroups = context.Web.SiteGroups;
+            context.Load(siteGroups);
+            context.ExecuteQuery();
+            foreach (var siteGroup in siteGroups)
+            {
+                memGroups.Add(siteGroup.Title);
+            }
+
+            return memGroups;
         }
 
     }

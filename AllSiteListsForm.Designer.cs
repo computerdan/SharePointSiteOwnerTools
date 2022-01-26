@@ -51,6 +51,7 @@
             this.lstBoxSiteLists.Name = "lstBoxSiteLists";
             this.lstBoxSiteLists.Size = new System.Drawing.Size(296, 524);
             this.lstBoxSiteLists.TabIndex = 2;
+            this.lstBoxSiteLists.SelectedValueChanged += new System.EventHandler(this.lstBoxSiteLists_SelectedValueChanged);
             // 
             // btnRetrieveItems
             // 

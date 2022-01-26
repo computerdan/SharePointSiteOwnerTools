@@ -270,8 +270,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\AllSiteListsForm.datasource" />
+    <None Include="Properties\DataSources\BaseSiteDetailsForm.datasource" />
+    <None Include="Properties\DataSources\MainForm.CurrentStatus.datasource" />
+    <None Include="Properties\DataSources\MainForm.datasource" />
     <None Include="Properties\DataSources\MyStrings.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\SharePointSiteOwnerTools.Properties.Resources.datasource" />
     <None Include="Properties\DataSources\SharePointSiteOwnerTools.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\SPAuth.datasource" />
+    <None Include="Properties\DataSources\SPOps.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -287,6 +295,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="External\Microsoft-SharePoint-Logo-Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

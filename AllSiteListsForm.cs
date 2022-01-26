@@ -74,5 +74,10 @@ namespace SharePointSiteOwnerTools
 
             this.Focus();
         }
+
+        private void lstBoxSiteLists_SelectedValueChanged(object sender, EventArgs e)
+        {
+            lstBoxListItems.Items.Clear();
+        }
     }
 }

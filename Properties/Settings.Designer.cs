@@ -25,13 +25,36 @@ namespace SharePointSiteOwnerTools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Not Set")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string currentBaseUrl {
             get {
                 return ((string)(this["currentBaseUrl"]));
             }
             set {
                 this["currentBaseUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string currentAuthUser {
+            get {
+                return ((string)(this["currentAuthUser"]));
+            }
+            set {
+                this["currentAuthUser"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool currentAuthUserIsSiteAdmin {
+            get {
+                return ((bool)(this["currentAuthUserIsSiteAdmin"]));
+            }
+            set {
+                this["currentAuthUserIsSiteAdmin"] = value;
             }
         }
     }

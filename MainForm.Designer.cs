@@ -34,11 +34,17 @@
             this.btnTestAccess = new System.Windows.Forms.Button();
             this.btnSetSite = new System.Windows.Forms.Button();
             this.grpBoxCurrentStatus = new System.Windows.Forms.GroupBox();
-            this.txtBoxCurrentStatus_BaseSiteSetAs = new System.Windows.Forms.TextBox();
             this.lblCurrentStatus_CurrentSite = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnBaseSiteDetails = new System.Windows.Forms.Button();
             this.btnRetrieveAllSiteLists = new System.Windows.Forms.Button();
+            this.lblCurrentAuthUser = new System.Windows.Forms.Label();
+            this.chkboxIsSiteAdmin = new System.Windows.Forms.CheckBox();
+            this.btnOpenSiteInDefaultBrowser = new System.Windows.Forms.Button();
+            this.txtBoxCurrentAuthUser = new System.Windows.Forms.TextBox();
+            this.txtBoxCurrentStatus_BaseSiteSetAs = new System.Windows.Forms.TextBox();
+            this.lstBoxMemberGroups = new System.Windows.Forms.ListBox();
+            this.btnRetrieveSiteMemberGroups = new System.Windows.Forms.Button();
             this.grpBoxCurrentStatus.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,6 +88,9 @@
             // 
             // grpBoxCurrentStatus
             // 
+            this.grpBoxCurrentStatus.Controls.Add(this.chkboxIsSiteAdmin);
+            this.grpBoxCurrentStatus.Controls.Add(this.txtBoxCurrentAuthUser);
+            this.grpBoxCurrentStatus.Controls.Add(this.lblCurrentAuthUser);
             this.grpBoxCurrentStatus.Controls.Add(this.txtBoxCurrentStatus_BaseSiteSetAs);
             this.grpBoxCurrentStatus.Controls.Add(this.lblCurrentStatus_CurrentSite);
             this.grpBoxCurrentStatus.Location = new System.Drawing.Point(532, 454);
@@ -90,16 +99,6 @@
             this.grpBoxCurrentStatus.TabIndex = 4;
             this.grpBoxCurrentStatus.TabStop = false;
             this.grpBoxCurrentStatus.Text = "Current Status";
-            // 
-            // txtBoxCurrentStatus_BaseSiteSetAs
-            // 
-            this.txtBoxCurrentStatus_BaseSiteSetAs.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SharePointSiteOwnerTools.Properties.Settings.Default, "currentBaseUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtBoxCurrentStatus_BaseSiteSetAs.Location = new System.Drawing.Point(10, 137);
-            this.txtBoxCurrentStatus_BaseSiteSetAs.Name = "txtBoxCurrentStatus_BaseSiteSetAs";
-            this.txtBoxCurrentStatus_BaseSiteSetAs.ReadOnly = true;
-            this.txtBoxCurrentStatus_BaseSiteSetAs.Size = new System.Drawing.Size(534, 20);
-            this.txtBoxCurrentStatus_BaseSiteSetAs.TabIndex = 2;
-            this.txtBoxCurrentStatus_BaseSiteSetAs.Text = global::SharePointSiteOwnerTools.Properties.Settings.Default.currentBaseUrl;
             // 
             // lblCurrentStatus_CurrentSite
             // 
@@ -140,11 +139,81 @@
             this.btnRetrieveAllSiteLists.UseVisualStyleBackColor = true;
             this.btnRetrieveAllSiteLists.Click += new System.EventHandler(this.btnRetrieveAllSiteLists_Click);
             // 
+            // lblCurrentAuthUser
+            // 
+            this.lblCurrentAuthUser.AutoSize = true;
+            this.lblCurrentAuthUser.Location = new System.Drawing.Point(7, 82);
+            this.lblCurrentAuthUser.Name = "lblCurrentAuthUser";
+            this.lblCurrentAuthUser.Size = new System.Drawing.Size(94, 13);
+            this.lblCurrentAuthUser.TabIndex = 3;
+            this.lblCurrentAuthUser.Text = "Current Auth User:";
+            // 
+            // chkboxIsSiteAdmin
+            // 
+            this.chkboxIsSiteAdmin.AutoSize = true;
+            this.chkboxIsSiteAdmin.Location = new System.Drawing.Point(457, 81);
+            this.chkboxIsSiteAdmin.Name = "chkboxIsSiteAdmin";
+            this.chkboxIsSiteAdmin.Size = new System.Drawing.Size(87, 17);
+            this.chkboxIsSiteAdmin.TabIndex = 5;
+            this.chkboxIsSiteAdmin.Text = "Is Site Admin";
+            this.chkboxIsSiteAdmin.UseVisualStyleBackColor = true;
+            // 
+            // btnOpenSiteInDefaultBrowser
+            // 
+            this.btnOpenSiteInDefaultBrowser.Location = new System.Drawing.Point(886, 5);
+            this.btnOpenSiteInDefaultBrowser.Name = "btnOpenSiteInDefaultBrowser";
+            this.btnOpenSiteInDefaultBrowser.Size = new System.Drawing.Size(152, 23);
+            this.btnOpenSiteInDefaultBrowser.TabIndex = 8;
+            this.btnOpenSiteInDefaultBrowser.Text = "Open site in Default Browser";
+            this.btnOpenSiteInDefaultBrowser.UseVisualStyleBackColor = true;
+            this.btnOpenSiteInDefaultBrowser.Click += new System.EventHandler(this.btnOpenSiteInDefaultBrowser_Click);
+            // 
+            // txtBoxCurrentAuthUser
+            // 
+            this.txtBoxCurrentAuthUser.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SharePointSiteOwnerTools.Properties.Settings.Default, "currentAuthUser", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtBoxCurrentAuthUser.Location = new System.Drawing.Point(10, 98);
+            this.txtBoxCurrentAuthUser.Name = "txtBoxCurrentAuthUser";
+            this.txtBoxCurrentAuthUser.ReadOnly = true;
+            this.txtBoxCurrentAuthUser.Size = new System.Drawing.Size(534, 20);
+            this.txtBoxCurrentAuthUser.TabIndex = 4;
+            this.txtBoxCurrentAuthUser.Text = global::SharePointSiteOwnerTools.Properties.Settings.Default.currentAuthUser;
+            // 
+            // txtBoxCurrentStatus_BaseSiteSetAs
+            // 
+            this.txtBoxCurrentStatus_BaseSiteSetAs.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SharePointSiteOwnerTools.Properties.Settings.Default, "currentBaseUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtBoxCurrentStatus_BaseSiteSetAs.Location = new System.Drawing.Point(10, 137);
+            this.txtBoxCurrentStatus_BaseSiteSetAs.Name = "txtBoxCurrentStatus_BaseSiteSetAs";
+            this.txtBoxCurrentStatus_BaseSiteSetAs.ReadOnly = true;
+            this.txtBoxCurrentStatus_BaseSiteSetAs.Size = new System.Drawing.Size(534, 20);
+            this.txtBoxCurrentStatus_BaseSiteSetAs.TabIndex = 2;
+            this.txtBoxCurrentStatus_BaseSiteSetAs.Text = global::SharePointSiteOwnerTools.Properties.Settings.Default.currentBaseUrl;
+            // 
+            // lstBoxMemberGroups
+            // 
+            this.lstBoxMemberGroups.FormattingEnabled = true;
+            this.lstBoxMemberGroups.Location = new System.Drawing.Point(85, 129);
+            this.lstBoxMemberGroups.Name = "lstBoxMemberGroups";
+            this.lstBoxMemberGroups.Size = new System.Drawing.Size(440, 95);
+            this.lstBoxMemberGroups.TabIndex = 9;
+            // 
+            // btnRetrieveSiteMemberGroups
+            // 
+            this.btnRetrieveSiteMemberGroups.Location = new System.Drawing.Point(531, 129);
+            this.btnRetrieveSiteMemberGroups.Name = "btnRetrieveSiteMemberGroups";
+            this.btnRetrieveSiteMemberGroups.Size = new System.Drawing.Size(161, 23);
+            this.btnRetrieveSiteMemberGroups.TabIndex = 10;
+            this.btnRetrieveSiteMemberGroups.Text = "Retrieve Site Member Groups";
+            this.btnRetrieveSiteMemberGroups.UseVisualStyleBackColor = true;
+            this.btnRetrieveSiteMemberGroups.Click += new System.EventHandler(this.btnRetrieveSiteMemberGroups_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 633);
+            this.Controls.Add(this.btnRetrieveSiteMemberGroups);
+            this.Controls.Add(this.lstBoxMemberGroups);
+            this.Controls.Add(this.btnOpenSiteInDefaultBrowser);
             this.Controls.Add(this.btnRetrieveAllSiteLists);
             this.Controls.Add(this.btnBaseSiteDetails);
             this.Controls.Add(this.btnExit);
@@ -175,6 +244,12 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnBaseSiteDetails;
         private System.Windows.Forms.Button btnRetrieveAllSiteLists;
+        public System.Windows.Forms.TextBox txtBoxCurrentAuthUser;
+        private System.Windows.Forms.Label lblCurrentAuthUser;
+        private System.Windows.Forms.CheckBox chkboxIsSiteAdmin;
+        private System.Windows.Forms.Button btnOpenSiteInDefaultBrowser;
+        private System.Windows.Forms.ListBox lstBoxMemberGroups;
+        private System.Windows.Forms.Button btnRetrieveSiteMemberGroups;
     }
 }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,7 @@ namespace SharePointSiteOwnerTools
             currentBaseSiteStatus = Properties.Settings.Default.currentBaseUrl;
             txtBoxCurrentStatus_BaseSiteSetAs.Text = currentBaseSiteStatus;
             txtBoxSiteUrl.Text = currentBaseSiteStatus;
+            chkboxIsSiteAdmin.Checked = Properties.Settings.Default.currentAuthUserIsSiteAdmin;
         }
 
         public static class CurrentStatus
@@ -36,10 +38,27 @@ namespace SharePointSiteOwnerTools
                 {
                     Properties.Settings.Default.currentBaseUrl = value;
                     Properties.Settings.Default.Save();
-                    //txtBoxCurrentStatus_BaseSiteSetAs.Text=value;
                 }
             }
-
+            public static string currentAuthUser
+            {
+                get { return Properties.Settings.Default.currentAuthUser; }
+                set
+                {
+                    Properties.Settings.Default.currentAuthUser = value;
+                    Properties.Settings.Default.Save();
+                }
+            }
+            public static bool currentAuthUserIsAdmin
+            {
+                get { return Properties.Settings.Default.currentAuthUserIsSiteAdmin; }
+                set
+                {
+                    Properties.Settings.Default.currentAuthUserIsSiteAdmin = value;
+                    Properties.Settings.Default.Save();
+                  
+                }
+            }
 
         }
 
@@ -77,8 +96,12 @@ namespace SharePointSiteOwnerTools
             {
                 ClientContext ctx = SPAuth.GetWebLoginClientContext(strTargetString);
                 Web web = ctx.Web;
-                ctx.Load(web, w => w.Title);
+                ctx.Load(web, w => w.Title, w => w.CurrentUser);
                 ctx.ExecuteQuery();
+                //currentAuthUser
+                CurrentStatus.currentAuthUser = web.CurrentUser.Email.ToString();
+                CurrentStatus.currentAuthUserIsAdmin = web.CurrentUser.IsSiteAdmin;
+                chkboxIsSiteAdmin.Checked = CurrentStatus.currentAuthUserIsAdmin;
                 string confirmWebText = "You have connected to site: " + web.Title + " using Interactive Web Login!";
                 Console.WriteLine("You have connected to {0} site, using Interactive Web Login!", web.Title);
                 System.Windows.Forms.MessageBox.Show(confirmWebText);
@@ -104,6 +127,40 @@ namespace SharePointSiteOwnerTools
         {
             AllSiteListsForm frm = new AllSiteListsForm();
             frm.Show();
+        }
+
+        private void btnOpenSiteInDefaultBrowser_Click(object sender, EventArgs e)
+        {
+            openInDefaultBrowser(CurrentStatus.currentBaseUrl);
+        }
+        private void openInDefaultBrowser(string targetUrl)
+        {
+
+            try
+            {
+                System.Diagnostics.Process.Start(targetUrl);
+            }
+            catch (System.ComponentModel.Win32Exception noBrowser)
+            {
+                if (noBrowser.ErrorCode == -2147467259)
+                    MessageBox.Show(noBrowser.Message);
+            }
+            catch (System.Exception other)
+            {
+                MessageBox.Show(other.Message);
+            }
+        }
+
+        private void btnRetrieveSiteMemberGroups_Click(object sender, EventArgs e)
+        {
+            ArrayList memGroupList = new ArrayList();
+            ClientContext ctx = SPAuth.GetWebLoginClientContext(CurrentStatus.currentBaseUrl);
+            memGroupList = SPOps.getAllSPMemberGroups(ctx);
+
+            foreach(var memGroup in memGroupList)
+            {
+                lstBoxMemberGroups.Items.Add(memGroup);
+            }
         }
     }
 }
