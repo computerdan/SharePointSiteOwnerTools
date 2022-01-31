@@ -251,6 +251,18 @@
     <Compile Include="Settings.cs" />
     <Compile Include="SPAuth.cs" />
     <Compile Include="SPOps.cs" />
+    <Compile Include="SPPermissionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPPermissionsForm.Designer.cs">
+      <DependentUpon>SPPermissionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubSitesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubSitesForm.Designer.cs">
+      <DependentUpon>SubSitesForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AllSiteListsForm.resx">
       <DependentUpon>AllSiteListsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +281,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SPPermissionsForm.resx">
+      <DependentUpon>SPPermissionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubSitesForm.resx">
+      <DependentUpon>SubSitesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AllSiteListsForm.datasource" />
     <None Include="Properties\DataSources\BaseSiteDetailsForm.datasource" />

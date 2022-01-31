@@ -18,7 +18,8 @@ namespace SharePointSiteOwnerTools
     {
         private static string currentBaseSiteStatus;
 
-
+        
+        
 
         public MainForm()
         {
@@ -151,16 +152,33 @@ namespace SharePointSiteOwnerTools
             }
         }
 
-        private void btnRetrieveSiteMemberGroups_Click(object sender, EventArgs e)
-        {
-            ArrayList memGroupList = new ArrayList();
-            ClientContext ctx = SPAuth.GetWebLoginClientContext(CurrentStatus.currentBaseUrl);
-            memGroupList = SPOps.getAllSPMemberGroups(ctx);
+        //private void btnRetrieveSiteMemberGroups_Click(object sender, EventArgs e)
+        //{
+        //    ArrayList memGroupList = new ArrayList();
+        //    ClientContext ctx = SPAuth.GetWebLoginClientContext(CurrentStatus.currentBaseUrl);
+        //    memGroupList = SPOps.getAllSPMemberGroups(ctx);
 
-            foreach(var memGroup in memGroupList)
-            {
-                lstBoxMemberGroups.Items.Add(memGroup);
-            }
+        //    foreach(var memGroup in memGroupList)
+        //    {
+        //        lstBoxMemberGroups.Items.Add(memGroup);
+        //    }
+        //}
+
+        private void btnGetSitePermissions_Click(object sender, EventArgs e)
+        {
+            SPPermissionsForm sPPermissions = new SPPermissionsForm();
+            sPPermissions.Show();
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void btnGetSiteStructureTree_Click(object sender, EventArgs e)
+        {
+            SubSitesForm sPSubSitesForm = new SubSitesForm();
+            sPSubSitesForm.Show();
         }
     }
 }

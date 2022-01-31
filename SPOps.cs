@@ -49,24 +49,24 @@ namespace SharePointSiteOwnerTools
         }
 
 
-        private static void GetSubSites(ClientContext siteCtx, WebCollection webs, ref ArrayList allSites)
-        {
-            if (webs.Count > 0)
-            {
-                siteCtx.Load(webs, w => w.Include(a => a.Webs, a => a.Title, a => a.Url));
-                siteCtx.ExecuteQuery();
-                foreach (Web web in webs)
-                {
-                    allSites.Add(web);
-                    GetSubSites(siteCtx, web.Webs, ref allSites);
-                }
-                siteCtx.ExecuteQuery();
-            }
-        }
+        //private static void GetSubSites(ClientContext siteCtx, WebCollection webs, ref ArrayList allSites)
+        //{
+        //    if (webs.Count > 0)
+        //    {
+        //        siteCtx.Load(webs, w => w.Include(a => a.Webs, a => a.Title, a => a.Url));
+        //        siteCtx.ExecuteQuery();
+        //        foreach (Web web in webs)
+        //        {
+        //            allSites.Add(web);
+        //            GetSubSites(siteCtx, web.Webs, ref allSites);
+        //        }
+        //        siteCtx.ExecuteQuery();
+        //    }
+        //}
 
         //ref: https://morgantechspace.com/2016/02/get-all-sites-and-subsites-in-sharepoint-online-csom.html
 
-        
+
         /// <summary>
         /// Retrieves Client Context for SPSite - uses SPSite URL to gather SubWebs Collection
         /// Retrieves additional Client Contexts for each subWeb lookup (using Web subWeb.Url as URL) as it loops through same Method
@@ -106,7 +106,7 @@ namespace SharePointSiteOwnerTools
             return subSitesArray;
 
         }
-       
+
         /// <summary>
         /// Retrieves Site Lists for a SharePoint Site
         /// </summary>
@@ -187,6 +187,47 @@ namespace SharePointSiteOwnerTools
 
             return memGroups;
         }
+        /// <summary>
+        /// Retrieves All Sites and SubSite for provide siteURL
+        /// ref: https://morgantechspace.com/2016/02/get-all-sites-and-subsites-in-sharepoint-online-csom.html
+        /// </summary>
+        /// <param name="siteCtx"></param>
+        /// <param name="siteUrl"></param>
+        public static ArrayList Get_AllSites_and_SubSites_For_Given_Site(string siteUrl)
+        {
+            ArrayList returnArrayList = new ArrayList();
 
+            ClientContext siteCtx = SPAuth.GetWebLoginClientContext(siteUrl);
+            var web = siteCtx.Web;
+            ArrayList allSites = new ArrayList();
+            siteCtx.Load(web, w => w.Webs, w => w.Title, w => w.Url);
+            siteCtx.ExecuteQuery();
+            allSites.Add(web);
+            //Getting sub sites and all the nested sub sites
+            GetSubSites(siteCtx, web.Webs, ref allSites);
+            foreach (Web site in allSites)
+            {
+                returnArrayList.Add(site.Url);
+                //Console.WriteLine(site.Title + " => " + site.Url);
+                //Console.WriteLine("-------------------");
+            }
+
+            return returnArrayList; 
+        }
+
+        private static void GetSubSites(ClientContext siteCtx, WebCollection webs, ref ArrayList allSites)
+        {
+            if (webs.Count > 0)
+            {
+                siteCtx.Load(webs, w => w.Include(a => a.Webs, a => a.Title, a => a.Url));
+                siteCtx.ExecuteQuery();
+                foreach (Web web in webs)
+                {
+                    allSites.Add(web);
+                    GetSubSites(siteCtx, web.Webs, ref allSites);
+                }
+                siteCtx.ExecuteQuery();
+            }
+        }
     }
 }
