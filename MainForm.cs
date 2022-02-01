@@ -24,6 +24,7 @@ namespace SharePointSiteOwnerTools
         public MainForm()
         {
             InitializeComponent();
+       
             currentBaseSiteStatus = Properties.Settings.Default.currentBaseUrl;
             txtBoxCurrentStatus_BaseSiteSetAs.Text = currentBaseSiteStatus;
             txtBoxSiteUrl.Text = currentBaseSiteStatus;
