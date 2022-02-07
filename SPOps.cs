@@ -212,7 +212,7 @@ namespace SharePointSiteOwnerTools
                 //Console.WriteLine("-------------------");
             }
 
-            return returnArrayList; 
+            return returnArrayList;
         }
 
         private static void GetSubSites(ClientContext siteCtx, WebCollection webs, ref ArrayList allSites)
@@ -228,6 +228,72 @@ namespace SharePointSiteOwnerTools
                 }
                 siteCtx.ExecuteQuery();
             }
+        }
+
+        /// <summary>
+        /// Returns All Fields In a List
+        /// Ref: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code#retrieve-all-of-the-fields-in-a-list
+        /// </summary>
+        /// <param name="SPSite"></param>
+        /// <param name="ListByTitle"></param>
+        /// <returns>ArrayList</returns>
+        public static ArrayList GetAllFieldsInAList(string siteURL, string listByTitle)
+        {
+            ArrayList returnArrayList = new ArrayList();
+
+            // Starting with ClientContext, the constructor requires a URL to the
+            // server running SharePoint.
+            ClientContext context = SPAuth.GetWebLoginClientContext(siteURL);
+
+            SP.List list = context.Web.Lists.GetByTitle(listByTitle);
+            context.Load(list.Fields);
+
+            try
+            {
+                // We must call ExecuteQuery before enumerate list.Fields.
+                context.ExecuteQuery();
+
+                foreach (SP.Field field in list.Fields)
+                {
+                    returnArrayList.Add(field.InternalName.ToString());
+                }
+
+                return returnArrayList;
+            }
+            catch (System.Net.WebException ex)
+            {
+                throw new Exception("Server Returned Error: (403) Forbidden");
+            }
+
+
+        }
+
+        /// <summary>
+        /// Retrieve Users In a SP Permissions Group by using GroupName
+        /// ref: https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-sharepoint-client-library-code#retrieve-all-users-in-a-sharepoint-group
+        /// </summary>
+        /// <param name="siteURL"></param>
+        /// <param name="groupName"></param>
+        /// <returns>ArrayList</returns>
+        public static ArrayList RetrieveAllUsersInASharePointGroup(string siteURL, string groupName)
+        {
+            ArrayList returnArrayList = new ArrayList();
+
+            ClientContext context = SPAuth.GetWebLoginClientContext(siteURL);
+            GroupCollection siteGroups = context.Web.SiteGroups;
+
+            // Assume that there is a "Members" group, and the ID=5.
+            Group membersGroup = siteGroups.GetByName(groupName);
+            context.Load(membersGroup.Users);
+            context.ExecuteQuery();
+
+            foreach (User member in membersGroup.Users)
+            {
+                // We have all the user info. For example, Title.
+                returnArrayList.Add(member.Title);
+            }
+
+            return returnArrayList;
         }
     }
 }

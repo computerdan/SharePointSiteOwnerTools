@@ -49,9 +49,15 @@ namespace SharePointSiteOwnerTools
             else
             {
                 string groupSelected = lstBoxMemberGroups.SelectedItem.ToString();
-                //TODO
-                string msgBoxTmp = "TODO: Grab/Show List for: " + groupSelected;
-                MessageBox.Show(msgBoxTmp);
+                ArrayList memUserList = new ArrayList();
+
+                memUserList = SPOps.RetrieveAllUsersInASharePointGroup(MainForm.CurrentStatus.currentBaseUrl, groupSelected);
+
+                foreach (var memUser in memUserList)
+                {
+                    lstBoxGroupMemberList.Items.Add(memUser.ToString());
+                }
+
             }
         }
     }

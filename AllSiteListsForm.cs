@@ -79,5 +79,26 @@ namespace SharePointSiteOwnerTools
         {
             lstBoxListItems.Items.Clear();
         }
+
+        private void btnReturnAllFieldsInAList_Click(object sender, EventArgs e)
+        {
+            lstBoxReturnAllFieldsInList.Items.Clear();
+
+            string listSelected = lstBoxSiteLists.SelectedItems[0].ToString();
+            var listItems = new ArrayList();
+            listItems = SPOps.GetAllFieldsInAList(CurrentStatus.currentBaseUrl, listSelected);
+
+            foreach (var item in listItems)
+            {
+                if (item != null)
+                {
+                    item.ToString();
+
+                    lstBoxReturnAllFieldsInList.Items.Add(item);
+                }
+            }
+
+            this.Focus();
+        }
     }
 }
