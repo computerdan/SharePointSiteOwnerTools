@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubSitesForm));
             this.treeViewSubSites = new System.Windows.Forms.TreeView();
             this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -57,8 +58,9 @@
             this.ClientSize = new System.Drawing.Size(2202, 1043);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.treeViewSubSites);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubSitesForm";
-            this.Text = "SubSitesForm";
+            this.Text = "SharePoint Site Tree Structure";
             this.ResumeLayout(false);
 
         }

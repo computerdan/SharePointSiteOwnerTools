@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllSiteListsForm));
             this.btnClose = new System.Windows.Forms.Button();
             this.lstBoxSiteLists = new System.Windows.Forms.ListBox();
             this.btnRetrieveItems = new System.Windows.Forms.Button();
@@ -36,9 +37,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1148, 599);
+            this.btnClose.Location = new System.Drawing.Point(2105, 1106);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(138, 42);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -47,17 +49,20 @@
             // lstBoxSiteLists
             // 
             this.lstBoxSiteLists.FormattingEnabled = true;
-            this.lstBoxSiteLists.Location = new System.Drawing.Point(84, 31);
+            this.lstBoxSiteLists.ItemHeight = 24;
+            this.lstBoxSiteLists.Location = new System.Drawing.Point(154, 57);
+            this.lstBoxSiteLists.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lstBoxSiteLists.Name = "lstBoxSiteLists";
-            this.lstBoxSiteLists.Size = new System.Drawing.Size(296, 524);
+            this.lstBoxSiteLists.Size = new System.Drawing.Size(539, 964);
             this.lstBoxSiteLists.TabIndex = 2;
             this.lstBoxSiteLists.SelectedValueChanged += new System.EventHandler(this.lstBoxSiteLists_SelectedValueChanged);
             // 
             // btnRetrieveItems
             // 
-            this.btnRetrieveItems.Location = new System.Drawing.Point(386, 115);
+            this.btnRetrieveItems.Location = new System.Drawing.Point(708, 212);
+            this.btnRetrieveItems.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnRetrieveItems.Name = "btnRetrieveItems";
-            this.btnRetrieveItems.Size = new System.Drawing.Size(143, 34);
+            this.btnRetrieveItems.Size = new System.Drawing.Size(262, 63);
             this.btnRetrieveItems.TabIndex = 3;
             this.btnRetrieveItems.Text = "Retrieve items from a selected list";
             this.btnRetrieveItems.UseVisualStyleBackColor = true;
@@ -66,22 +71,26 @@
             // lstBoxListItems
             // 
             this.lstBoxListItems.FormattingEnabled = true;
-            this.lstBoxListItems.Location = new System.Drawing.Point(535, 31);
+            this.lstBoxListItems.ItemHeight = 24;
+            this.lstBoxListItems.Location = new System.Drawing.Point(981, 57);
+            this.lstBoxListItems.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lstBoxListItems.Name = "lstBoxListItems";
-            this.lstBoxListItems.Size = new System.Drawing.Size(296, 524);
+            this.lstBoxListItems.Size = new System.Drawing.Size(539, 964);
             this.lstBoxListItems.TabIndex = 4;
             // 
             // AllSiteListsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1235, 634);
+            this.ClientSize = new System.Drawing.Size(2264, 1170);
             this.Controls.Add(this.lstBoxListItems);
             this.Controls.Add(this.btnRetrieveItems);
             this.Controls.Add(this.lstBoxSiteLists);
             this.Controls.Add(this.btnClose);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "AllSiteListsForm";
-            this.Text = "AllSiteListsForm";
+            this.Text = "SharePoint Lists and List Items";
             this.ResumeLayout(false);
 
         }

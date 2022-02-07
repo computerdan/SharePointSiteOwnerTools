@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SPPermissionsForm));
             this.btnRetrieveSiteMemberGroups = new System.Windows.Forms.Button();
             this.lstBoxMemberGroups = new System.Windows.Forms.ListBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -73,9 +74,10 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRetrieveSiteMemberGroups);
             this.Controls.Add(this.lstBoxMemberGroups);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SPPermissionsForm";
-            this.Text = "SPPermissions";
+            this.Text = "SharePoint Permissions";
             this.ResumeLayout(false);
 
         }
