@@ -18,7 +18,16 @@ namespace SharePointSiteOwnerTools
         {
             var authManager = new OfficeDevPnP.Core.AuthenticationManager();
 
-            ClientContext ctx = authManager.GetWebLoginClientContext(SPSite);
+            try
+            {
+                ClientContext ctx = authManager.GetWebLoginClientContext(SPSite);
+                return ctx;
+            }
+            catch (System.UriFormatException ex)
+            {
+                throw new Exception("No Base Site Provided!");
+               
+            }
             //The obtained ClientContext object can be used to connect to the SharePoint site.  
 
             //DEBUG
@@ -29,7 +38,7 @@ namespace SharePointSiteOwnerTools
             //Console.WriteLine("You have connected to {0} site, using Interactive Web Login!", web.Title);
             //System.Windows.Forms.MessageBox.Show(confirmWebText);
 
-            return ctx;
+            
 
         }
     }

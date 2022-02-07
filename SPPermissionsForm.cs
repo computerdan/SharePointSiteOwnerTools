@@ -38,5 +38,21 @@ namespace SharePointSiteOwnerTools
         {
             this.Close();
         }
+
+        private void btnRetrieveGroupMembers_Click(object sender, EventArgs e)
+        {
+            //string nothingSelected = "Nothing Selected";
+            if (lstBoxMemberGroups.SelectedIndex == -1)
+            {
+                MessageBox.Show("Nothing Selected!");
+            }
+            else
+            {
+                string groupSelected = lstBoxMemberGroups.SelectedItem.ToString();
+                //TODO
+                string msgBoxTmp = "TODO: Grab/Show List for: " + groupSelected;
+                MessageBox.Show(msgBoxTmp);
+            }
+        }
     }
 }
